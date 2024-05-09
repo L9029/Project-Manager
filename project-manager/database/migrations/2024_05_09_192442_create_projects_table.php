@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->unsignedDecimal('budget', $precision = 8, $scale = 2);
+            $table->date("execution_date");
+            $table->boolean("is_active");
             $table->timestamps();
         });
     }
