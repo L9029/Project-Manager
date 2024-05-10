@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("city_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("company_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string("name");
             $table->unsignedDecimal('budget', $precision = 8, $scale = 2);
             $table->date("execution_date");
