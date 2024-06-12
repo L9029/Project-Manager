@@ -13,8 +13,14 @@ class ProjectController extends Controller
      * @return array return an array with all the data from the table Projects.
      */
     public function getAllProjects(){
-        $projects = Project::all();
+        //$projects = Project::all();
 
-        return $projects;
+        $projects_chunk = Project::chunk(200, function ($projects) {
+            foreach ($projects as $project) {
+                echo $project;
+            }
+        });
+
+        return $projects_chunk;
     }
 }
